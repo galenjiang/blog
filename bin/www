@@ -8,6 +8,7 @@ var app = require('../app');
 var debug = require('debug')('blog:server');
 var http = require('http');
 
+
 /**
  * Get port from environment and store in Express.
  */
@@ -15,7 +16,7 @@ var http = require('http');
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 // set enviroment development or production
-app.set('env', process.env.env || 'development');
+app.set('env', process.env.ENV || 'development');
 /**
  * Create HTTP server.
  */

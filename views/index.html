@@ -2,7 +2,46 @@
 
 
 <div class="container">
-  <%= title %>
+  <% articles.forEach(function(el){ %>
+  <div class="media">
+    <a class="media-left" href="#">
+      <img src="<%= el.user.avatar %>" alt="">
+    </a>
+    <div class="media-body">
+      <h4 class="media-heading">
+  <%= el.title %>
+      </h4>
+      <div><%= el.brief %></div>
+    </div>
+    <div class="media-bottom">
+      作者：<%= el.user.username %>
+      <span class="pull-right">发表时间：<%= el.createAt.toLocaleString() %></span>
+    </div>
+  </div>
+  <% }) %>
+  <nav>
+    <ul class="pagination">
+      <%if(page > 1){%>
+        <li><a href="/?seach=<%=keyword || search%>&page=<%=page-1%>&size=<%=size%>">&laquo;</a></li>
+      <%}%>
+      <%
+        for(var i = 0; i< total; i++){
+          if(page == i + 1){
+      %>
+      <li class="active"><a href="/?seach=<%=keyword || search%>&page=<%=i+1%>&size=<%=size%>"><%= i+1 %></a></li>
+      <%
+        }else{
+      %>
+      <li><a href="/?seach=<%=keyword || search%>&page=<%=i+1%>&size=<%=size%>"><%= i+1 %></a></li>
+      <%}%>
+
+      <%}%>
+      <%if(page < total){%>
+        <li><a href="/?seach=<%=keyword || search%>&page=<%=page+1%>&size=<%=size%>">&raquo;</a></li>
+      <%}%>
+
+    </ul>
+  </nav>
 </div>
 
 
