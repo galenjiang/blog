@@ -1,16 +1,21 @@
 const Koa = require('koa');
-const app = new Koa();
 const serve = require('koa-static');
 const path = require('path');
 const fs = require('fs');
+const app = new Koa();
 
-app.use(serve(path.resolve(__dirname, '../public')));
+const readFile = fileName => new Promise((resolve, reject) => {
+    fs.readFile(fileName, 'utf8', (error, data) => {
+      if (error) reject(error);
+      resolve(data);
+    });
+  });
 
-app.use(ctx => {
+app.use(serve(path.resolve(__dirname, 'public')));
+
+app.use(async (ctx, next) => {
   if(ctx.request.path === '/') {
-    fs.readFile('./views/index.html', (err, data) => {
-      ctx.body = data;
-    })
+    ctx.body = await readFile('./views/index.html')
   }
 });
 

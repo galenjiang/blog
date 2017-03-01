@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "cross-env PORT=3000 ENV=development pm2 start ./bin/www"
+    "start": "cross-env PORT=80 ENV=development pm2 start ./bin/www"
   },
   "dependencies": {
     "koa": "^2.0.1",

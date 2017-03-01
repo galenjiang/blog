@@ -2,6 +2,6 @@ const http = require('http')
 
 const app = require('../app.js')
 
-http.createServer(app.callback()).listen(80, server => {
-  console.log(server)
+http.createServer(app.callback()).listen(80, (server) => {
+  console.log('running')
 });
