@@ -6,7 +6,8 @@
     "start": "cross-env PORT=3000 ENV=development pm2 start ./bin/www"
   },
   "dependencies": {
-    "koa": "^2.0.1"
+    "koa": "^2.0.1",
+    "koa-static": "^3.0.0"
   },
   "devDependencies": {
     "cross-env": "^3.1.4",

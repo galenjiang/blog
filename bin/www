@@ -1,8 +1,7 @@
-const Koa = require('koa');
-const app = new Koa();
+const http = require('http')
 
-app.use(ctx => {
-  ctx.body = 'Hello World';
+const app = require('../app.js')
+
+http.createServer(app.callback()).listen(80, server => {
+  console.log(server)
 });
-
-app.listen(80);
