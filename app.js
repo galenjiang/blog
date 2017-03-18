@@ -1,22 +1,29 @@
+const path = require('path');
 const Koa = require('koa');
 const serve = require('koa-static');
-const path = require('path');
-const fs = require('fs');
+const views = require('koa-views');
+const Router = require('koa-router');
+
+const route = require('./router');
+const api = require('./router/api');
+const error = require('./router/404');
+
 const app = new Koa();
 
-const readFile = fileName => new Promise((resolve, reject) => {
-    fs.readFile(fileName, 'utf8', (error, data) => {
-      if (error) reject(error);
-      resolve(data);
-    });
-  });
 
+app.use(views(__dirname + '/views'));
 app.use(serve(path.resolve(__dirname, 'public')));
 
-app.use(async (ctx, next) => {
-  if(ctx.request.path === '/') {
-    ctx.body = await readFile('./views/index.html')
-  }
-});
+const indexRoute = new Router();
+indexRoute.use('/', route.routes(), route.allowedMethods())
+app.use(indexRoute.routes());
+
+const apiRoute = new Router();
+apiRoute.use('/api', api.routes(), api.allowedMethods())
+app.use(apiRoute.routes());
+
+const errRoute = new Router();
+errRoute.use('/*', error.routes(), error.allowedMethods())
+app.use(errRoute.routes());
 
 module.exports = app;
