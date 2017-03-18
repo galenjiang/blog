@@ -3090,6 +3090,10 @@ samp {
 .ant-layout-sider-zero-width-trigger:hover {
   background: #535353;
 }
+.logo___src-layout-AppHeader-___style-M__307_7 {
+  color: #fff;
+  font-size: 46px;
+}
 .ant-menu {
   outline: none;
   margin-bottom: 0;
@@ -3497,6 +3501,9 @@ samp {
 .ant-menu-dark .ant-menu-submenu-disabled > a {
   opacity: 0.8;
   color: rgba(255, 255, 255, 0.35) !important;
+}
+.right___src-layout-AppFooter-___style-M__2rH5G {
+  text-align: center;
 }
 .FourOFour___src-pages-404-___style-M__2O-A7 {
   font-size: 5em;
