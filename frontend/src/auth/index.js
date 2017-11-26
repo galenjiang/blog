@@ -1,8 +1,8 @@
 import jsonp from 'jsonp';
 import axios from 'axios';
-import config from '../config';
-import userStore from '../user-strore';
-import axiosCustomed from '../axios';
+import config from '../config/index';
+import userStore from '../store/index';
+import axiosCustomed from '../common/axios';
 
 export default () => new Promise((resolve, reject) => {
   jsonp(`${config.videojjDomain}/api/jsonp/getCookie.js?callback=`, {

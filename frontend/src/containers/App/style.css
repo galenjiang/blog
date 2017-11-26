@@ -1,0 +1,8 @@
+.app-wrapper {
+  min-height: 100vh;
+  background: no-repeat center / cover url(./img/background.png);
+  background-attachment: fixed;
+  & .app-body {
+    height: 2000px;
+  }
+}

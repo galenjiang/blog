@@ -11,9 +11,9 @@ module.exports = merge(baseConfig, {
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: './index.html',
+      template: './pages/app.html',
     }),
-
+    new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
 
   ],
@@ -24,6 +24,6 @@ module.exports = merge(baseConfig, {
     contentBase: path.join(__dirname, '../server'),
     historyApiFallback: true,
     hot: true,
-    publicPath: '/',
+    publicPath: '',
   }
 })

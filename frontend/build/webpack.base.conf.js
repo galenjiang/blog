@@ -1,38 +1,75 @@
-/* eslint-disable */
 const webpack = require('webpack')
 const path = require('path')
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 const isDevelopment = process.env.NODE_ENV === 'development'
 
 module.exports = {
   context: path.resolve(__dirname, '../src'),
 
   entry: {
-    index: isDevelopment
-      ? ['../build/dev-client', './index']
-      : ['./index']
+    vendor: ['react', 'react-dom'],
+    app: isDevelopment
+      ? [
+        'webpack-hot-middleware/client',
+        'react-hot-loader/patch',
+        './pages/app.tsx'
+      ]
+      : ['./pages/app.tsx'],
+    // test: isDevelopment
+    //   ? [
+    //     'webpack-hot-middleware/client',
+    //     'react-hot-loader/patch',
+    //     './pages/test.tsx'
+    //   ]
+    //   : ['./pages/test.tsx'],
   },
 
   output: {
     path: path.resolve(__dirname, isDevelopment ? '../server' : '../dist'),
-    publicPath: '/',                                                               // default ''
-    filename: isDevelopment ? '[name].js' :'[name]-[hash:8].js',
-    // chunkFilename: isServer ? '[id].chunk.js' : '[name].js'
+    publicPath: '',                                         // default ''
+    filename: isDevelopment ? 'js/[name].js' : 'js/[name]-[hash:4].js',
+    // chunkFilename: isDevelopment ? '[id].chunk.js' : '[name].js'
   },
 
   resolve: {
-    extensions: ['.js', '.tsx'],
+    extensions: [".ts", ".tsx", ".js"]
   },
 
   module: {
     rules: [
+      {enforce: "pre", test: /\.js$/, loader: "source-map-loader"},
       {
-        test: /\.ts$/,
-        use: 'awesome-typescript-loader',
+        test: /\.js$/,
+        use: [
+          {
+            loader: "babel-loader"
+          }
+        ],
         exclude: /node_modules/
       },
-
+      {
+        test: /\.(ts|tsx)$/,
+        use: [
+          {
+            loader: "babel-loader"
+          },
+          {
+            loader: 'awesome-typescript-loader',
+          }
+        ],
+        exclude: /node_modules/
+      },
+      {
+        test: /\.css$/,
+        use: isDevelopment ? ['style-loader', 'css-loader', 'postcss-loader'] :
+          ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: ['css-loader', 'postcss-loader']
+          })
+      },
       {
         test: /\.(png|jpg|gif)$/,
         use: [
@@ -40,37 +77,44 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 10000,
-              // name: '[name].[ext]?[hash]'
+              name: 'img/[name]-[hash:4].[ext]?'
             }
           }
         ]
       },
-      {
-        test: /\.css$/,
-        use: isDevelopment ? ['style-loader', 'css-loader','postcss-loader'] :
-          ExtractTextPlugin.extract({
-            fallback: 'style-loader',
-            use: ['css-loader', 'postcss-loader']
-          })
-      },
-
     ]
   },
 
   plugins: [
+    new BundleAnalyzerPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),   // built in config
-        // NODE_ENV_BUILD: JSON.stringify(env),
       }
     }),
-    new ExtractTextPlugin({ filename: '[name]-[hash].css' }),
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   name: 'vendor',
-    //   minChunks: Infinity,
-    //   filename: isServer ? 'vendor.js' : 'vendor-[hash].js'
-    // }),
+    new ExtractTextPlugin({filename: 'style/[name]-[hash:4].css'}),
+    new webpack.ProgressPlugin((percentage, msg) => {
+      let stream = process.stderr;
+      if (stream.isTTY && percentage < 0.95) {
+        stream.cursorTo(0);
+        stream.write('  ' + msg);
+        stream.clearLine(1);
+      } else if (percentage === 1) {
+        console.log('');
+        console.log('webpack: bundle build is now finished.');
+      }
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['common', 'vendor'],   // 必须先抽取到common，vendor不能被覆盖, 也不能分开配置，必须写在一起。。。
+      minChunks: 2,
+      // filename: isDevelopment ? 'js/vendor.js' : 'js/vendor-[hash:4].js'
+    }),
+
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['runtime'],
+      minChunks: Infinity,
+    }),
   ],
 
-  // devtool: isDevelopment ? 'eval' :'eval-source-map'
+  devtool: isDevelopment ? 'source-map' :'cheap-module-source-map'
 }

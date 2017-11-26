@@ -1,26 +1,11 @@
 {
   "presets": [
-    [
-      "latest",
-      {
-        "es2015": {
-          "modules": false
-        }
-      }
-    ],
-    "stage-0",
-    "react"
+    ["@babel/preset-env", {
+      "targets": {
+        "browsers": ["last 2 versions", "safari >= 7"]
+      },
+      "modules": false
+    }]
   ],
-  "plugins": [
-    "react-hot-loader/babel",
-    "transform-runtime",
-    [
-      "import",
-      {
-        "libraryName": "antd",
-        "style": "css"
-      }
-    ],
-    "transform-decorators-legacy"
-  ]
+  "plugins": ["react-hot-loader/babel"]
 }

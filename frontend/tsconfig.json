@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ESNext",
+    "moduleResolution": "node",
+    "allowJs": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noImplicitReturns": false,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "traceResolution": true,
+    "jsx": "react"
+  },
+  "files": [
+    "src/pages/*",
+//    "typings/global.d.ts"
+  ],
+  "include": [
+    "src/**/*",
+    "typings/global.d.ts"
+  ]
+}
