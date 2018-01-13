@@ -31,7 +31,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, isDevelopment ? '../server' : '../dist'),
-    publicPath: '',                                         // default ''
+    publicPath: '/',                                         // default ''
     filename: isDevelopment ? 'js/[name].js' : 'js/[name]-[hash:4].js',
     // chunkFilename: isDevelopment ? '[id].chunk.js' : '[name].js'
   },
