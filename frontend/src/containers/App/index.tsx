@@ -5,61 +5,73 @@ import * as cs from 'classnames'
 // import CSSModules from 'react-css-modules';
 // import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-interface InterfaceAppProps {
-  // title?: string
-}
+// interface InterfaceAppProps {
+// }
 
 interface InterfaceAppStates {
-  navbarShow: boolean
+  navBarShow: boolean
 }
 
-export default class App extends React.Component<InterfaceAppProps, InterfaceAppStates> {
+export default class App extends React.Component<{}, InterfaceAppStates> {
 
 
-  constructor(props: InterfaceAppProps) {
+  constructor(props: any) {
 
     super(props)
     this.state = {
-      navbarShow: false
+      navBarShow: false
     }
   }
+
   toggleNavbarShow = () => {
-    const navbarShow = !this.state.navbarShow
+    const navBarShow = !this.state.navBarShow
     this.setState({
-      navbarShow
+      navBarShow
     })
   }
+
   render() {
-    // const { title } = this.props
-    const { navbarShow } = this.state
+    const { navBarShow } = this.state
     return (
-      <div className="app-wrapper">
+      <div className="app-wrapper d-flex flex-column">
         <header>
           <nav className="navbar navbar-expand-lg navbar-light">
             <a className="navbar-brand" href="#">
-              <img src={head} width="80" height="80" alt="head-image" />
-              呱呱之家
+              <img src={ head } width="80" height="80" alt="head-image"/>
+              <span className="p-3 title">呱呱之家</span>
             </a>
-            <button onClick={this.toggleNavbarShow} className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button
+              onClick={ this.toggleNavbarShow }
+              className="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
               <span className="navbar-toggler-icon"></span>
             </button>
-            <div className={cs('collapse', 'navbar-collapse', { show: navbarShow })}>
+            <div className={ cs('collapse', 'navbar-collapse', { show: navBarShow }) }>
               <ul className="navbar-nav">
                 <li className="nav-item active">
-                  <a className="nav-link" href="#">Home</a>
+                  <a className="nav-link" href="#">主页</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">Archive</a>
+                  <a className="nav-link" href="#">文章</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">About</a>
+                  <a className="nav-link" href="#">关于</a>
                 </li>
               </ul>
             </div>
+
           </nav>
         </header>
         <section className="container app-body">
-          内容1
+          <article className="text-center slogon">
+            儿子呱呱成长的日记
+          </article>
         </section>
       </div>
     )

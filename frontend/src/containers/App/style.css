@@ -1,8 +1,20 @@
 .app-wrapper {
   min-height: 100vh;
-  background: no-repeat center / cover url(./img/background.png);
+  background: no-repeat center / cover url(./img/background.jpg);
   background-attachment: fixed;
+  color: #fff;
+  & .title {
+    color: #007bff;
+    font-size: 24px;
+  }
+  .navbar-nav {
+    color: #fff;
+  }
   & .app-body {
-    height: 2000px;
+    //height: 2000px;
+
+  }
+  & .slogon{
+    font-size: 24px;
   }
 }

@@ -1,8 +1,10 @@
 const webpack = require('webpack')
 const path = require('path')
-
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const cssnext = require('postcss-cssnext')
+const precss = require('precss')
+const autoprefixer = require('autoprefixer')
 
 const isDevelopment = process.env.NODE_ENV === 'development'
 
@@ -64,11 +66,63 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: isDevelopment ? ['style-loader', 'css-loader', 'postcss-loader'] :
-          ExtractTextPlugin.extract({
+        use: isDevelopment
+          ? [
+            {
+              loader: 'style-loader'
+            },
+            {
+              loader: 'css-loader'
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: function () {
+                  return [
+                    cssnext
+                  ]
+                }
+              }
+            }
+          ]
+          : ExtractTextPlugin.extract({
             fallback: 'style-loader',
-            use: ['css-loader', 'postcss-loader']
+            use: [
+              {
+                loader: 'css-loader',
+              },
+              {
+                loader: 'postcss-loader',
+                options: {
+                  plugins: function () {
+                    return [
+                      cssnext
+                    ]
+                  }
+                }
+              }
+            ]
           })
+      },
+      {
+        test: /\.(scss)$/,
+        use: [{
+          loader: 'style-loader',
+        }, {
+          loader: 'css-loader',
+        }, {
+          loader: 'postcss-loader',
+          options: {
+            plugins: function () { // post css plugins, can be exported to postcss.config.js
+              return [
+                precss,
+                autoprefixer,
+              ]
+            }
+          }
+        }, {
+          loader: 'sass-loader' // compiles Sass to CSS,  fix import mixins can not be recognized
+        }]
       },
       {
         test: /\.(png|jpg|gif)$/,
@@ -94,14 +148,14 @@ module.exports = {
     }),
     new ExtractTextPlugin({filename: 'style/[name]-[hash:4].css'}),
     new webpack.ProgressPlugin((percentage, msg) => {
-      let stream = process.stderr;
+      let stream = process.stderr
       if (stream.isTTY && percentage < 0.95) {
-        stream.cursorTo(0);
-        stream.write('  ' + msg);
-        stream.clearLine(1);
+        stream.cursorTo(0)
+        stream.write('  ' + msg)
+        stream.clearLine(1)
       } else if (percentage === 1) {
-        console.log('');
-        console.log('webpack: bundle build is now finished.');
+        console.log('')
+        console.log('webpack: bundle build is now finished.')
       }
     }),
     new webpack.optimize.CommonsChunkPlugin({
@@ -116,5 +170,5 @@ module.exports = {
     }),
   ],
 
-  devtool: isDevelopment ? 'source-map' :'cheap-module-source-map'
+  devtool: isDevelopment ? 'source-map' : 'cheap-module-source-map'
 }
