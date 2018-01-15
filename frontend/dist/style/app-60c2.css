@@ -1,6 +1,6 @@
 .app-wrapper {
   min-height: 100vh;
-  background: no-repeat center / cover url(/img/background-5625.jpg?);
+  background: no-repeat center / cover url(/img/background-5625.jpg);
   background-attachment: fixed;
   color: #fff
 }
@@ -20,4 +20,4 @@
   font-size: 24px;
 }
 
-/*# sourceMappingURL=app-4bdc.css.map*/
+/*# sourceMappingURL=app-60c2.css.map*/
