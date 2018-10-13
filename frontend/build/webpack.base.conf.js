@@ -4,6 +4,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const cssnext = require('postcss-cssnext')
 const precss = require('precss')
+const postImport = require('postcss-import')
+const easyImport = require('postcss-easy-import')
 const autoprefixer = require('autoprefixer')
 
 const isDevelopment = process.env.NODE_ENV === 'development'
@@ -113,16 +115,21 @@ module.exports = {
         }, {
           loader: 'postcss-loader',
           options: {
-            plugins: function () { // post css plugins, can be exported to postcss.config.js
+            // parser: require('postcss-scss'),
+            // stringifier: require('postcss-js'),
+            plugins: () => { // post css plugins, can be exported to postcss.config.js
               return [
-                precss,
-                autoprefixer,
+                // easyImport({ prefix: '_', extensions: '.scss' }),
+                // precss(),
+                autoprefixer(),
               ]
             }
           }
-        }, {
-          loader: 'sass-loader' // compiles Sass to CSS,  fix import mixins can not be recognized
-        }]
+        },
+          {
+            loader: 'sass-loader' // compiles Sass to CSS,  fix import mixins can not be recognized
+          }
+        ]
       },
       {
         test: /\.(png|jpg|gif)$/,
