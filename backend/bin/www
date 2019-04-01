@@ -1,8 +1,0 @@
-const http = require('http')
-
-const app = require('../app.js')
-
-console.log(process.env.PORT)
-http.createServer(app.callback()).listen(process.env.PORT, (server) => {
-  console.log('running......')
-});

@@ -1,0 +1,76 @@
+{
+  "name": "webpack-browser-app-starter",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development APP_SERVER=dev webpack-dev-server --config ./build/webpack.dev.conf.js",
+    "build": "cross-env NODE_ENV=production APP_SERVER=prod webpack --config ./build/webpack.prod.conf.js",
+    "dll": "webpack --config ./build/webpack.vendor.conf.js",
+    "prettier": "prettier --write \"src/**\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/galenjiang/webpack-browser-app-starter.git"
+  },
+  "author": "galen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/galenjiang/webpack-browser-app-starter/issues"
+  },
+  "homepage": "https://github.com/galenjiang/webpack-browser-app-starter#readme",
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-typescript": "^7.1.0",
+    "@typescript-eslint/eslint-plugin": "^1.4.2",
+    "@typescript-eslint/parser": "^1.4.2",
+    "babel-loader": "^8.0.5",
+    "clean-webpack-plugin": "^2.0.1",
+    "cross-env": "^5.2.0",
+    "css-loader": "^2.1.0",
+    "cssnano": "^4.1.8",
+    "eslint": "^5.15.3",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-import": "^2.16.0",
+    "fork-ts-checker-webpack-plugin": "^1.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.5",
+    "mini-css-extract-plugin": "^0.5.0",
+    "postcss": "^7.0.14",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.5.0",
+    "prettier": "^1.16.4",
+    "style-loader": "^0.23.1",
+    "stylelint-config-recommended": "^2.1.0",
+    "typescript": "^3.3.1",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.29.1",
+    "webpack-bundle-analyzer": "^3.0.3",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.1.14",
+    "webpack-merge": "^4.2.1"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.2.5",
+    "ramda": "^0.26.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{js,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
