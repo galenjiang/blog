@@ -23,6 +23,7 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 0,
     'arrow-parens': 0,
     '@typescript-eslint/indent': 0,
+    '@typescript-eslint/member-delimiter-style': 0,
   },
   overrides: [
     {
