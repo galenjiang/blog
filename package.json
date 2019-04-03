@@ -1,5 +1,5 @@
 {
-  "name": "webpack-browser-app-starter",
+  "name": "blog",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
@@ -11,22 +11,26 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/galenjiang/webpack-browser-app-starter.git"
+    "url": "git+https://github.com/galenjiang/blog.git"
   },
   "author": "galen",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/galenjiang/webpack-browser-app-starter/issues"
+    "url": "https://github.com/galenjiang/blog/issues"
   },
-  "homepage": "https://github.com/galenjiang/webpack-browser-app-starter#readme",
+  "homepage": "https://github.com/galenjiang/blog#readme",
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.1.0",
+    "@mdx-js/loader": "^0.20.3",
     "@typescript-eslint/eslint-plugin": "^1.4.2",
     "@typescript-eslint/parser": "^1.4.2",
     "babel-loader": "^8.0.5",
+    "babel-plugin-macros": "^2.5.1",
+    "babel-plugin-react-css-modules": "^5.2.4",
     "clean-webpack-plugin": "^2.0.1",
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.0",
@@ -35,6 +39,8 @@
     "eslint-config-airbnb": "^17.1.0",
     "eslint-loader": "^2.1.2",
     "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
     "fork-ts-checker-webpack-plugin": "^1.0.0",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^1.3.1",
@@ -46,6 +52,7 @@
     "prettier": "^1.16.4",
     "style-loader": "^0.23.1",
     "stylelint-config-recommended": "^2.1.0",
+    "tailwindcss": "^0.7.4",
     "typescript": "^3.3.1",
     "url-loader": "^1.1.2",
     "webpack": "^4.29.1",
@@ -56,7 +63,17 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
-    "ramda": "^0.26.1"
+    "@types/react": "^16.8.10",
+    "@types/react-css-modules": "^4.6.2",
+    "@types/react-dom": "^16.8.3",
+    "@types/react-router": "^4.4.5",
+    "@types/react-router-dom": "^4.3.1",
+    "babel-plugin-codegen": "^3.0.0",
+    "ramda": "^0.26.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0"
   },
   "husky": {
     "hooks": {

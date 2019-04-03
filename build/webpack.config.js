@@ -16,8 +16,7 @@ module.exports = {
   // Change to your "entry-point".
   // context: path.resolve(__dirname, '../src'),
   entry: {
-    main: './src/index.ts',
-    other: './src/other.ts',
+    main: './src/index',
   },
   output: {
     path: path.resolve('dist'),
@@ -40,17 +39,52 @@ module.exports = {
     rules: [
       {
         enforce: 'pre',
-        test: /\.ts$/,
+        test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
         loader: 'eslint-loader',
       },
       {
         oneOf: [
           {
+            test: /.mdx?$/,
+            use: ['babel-loader', '@mdx-js/loader'],
+          },
+          {
             // Include ts, tsx, js, and jsx files.
             test: /\.(ts|js)x?$/,
             exclude: /node_modules/,
             use: ['babel-loader'],
+          },
+          {
+            test: /\.module\.css/,
+            use: (isDev
+              ? [
+                  {
+                    loader: 'style-loader',
+                  },
+                ]
+              : [
+                  {
+                    loader: MiniCssExtractPlugin.loader,
+                    options: {},
+                  },
+                ]
+            ).concat([
+              {
+                loader: 'css-loader',
+                options: {
+                  localIdentName: '[path]___[name]__[local]___[hash:base64:5]',
+                  importLoaders: 1,
+                  modules: true,
+                  url: (url, resourcePath) => {
+                    return url.includes('http://www.xxx.com')
+                  },
+                },
+              },
+              {
+                loader: 'postcss-loader',
+              },
+            ]),
           },
           {
             test: /\.css/,

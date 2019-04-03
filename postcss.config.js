@@ -1,6 +1,8 @@
+/* eslint-disable */
 const postcssPresetEnv = require('postcss-preset-env')
 const cssnano = require('cssnano')
-// const autoprefixer = require('autoprefixer')
+const tailwindcss = require('tailwindcss')
+/* eslint-enable */
 
 module.exports = {
   plugins: [
@@ -17,8 +19,11 @@ module.exports = {
       stage: 4,
       features: {
         'nesting-rules': true,
+        'media-query-ranges': true,
       },
       // autoprefixer: {} // auto run
     }),
+
+    tailwindcss('./tailwind.js'),
   ],
 }

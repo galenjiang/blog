@@ -12,13 +12,15 @@ module.exports = {
     useJSXTextNode: true,
     // "project": "./tsconfig.json",
   },
-  extends: ['airbnb-base', 'plugin:@typescript-eslint/recommended'],
+  extends: ['airbnb', 'plugin:@typescript-eslint/recommended'],
   plugins: ['@typescript-eslint'],
   rules: {
     semi: 0,
     'import/prefer-default-export': 0,
     '@typescript-eslint/indent': ['error', 2],
     'import/no-unresolved': 0,
+    'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
+    '@typescript-eslint/explicit-function-return-type': 0,
   },
   overrides: [
     {

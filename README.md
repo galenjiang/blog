@@ -35,3 +35,7 @@ vscode
 ```
 
 webstorm 还没有完全适配
+
+## issue
+
+必须依赖@types/react-css-modules，否则 styleName 会报错

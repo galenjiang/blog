@@ -1,3 +1,2 @@
-body {
-  background: #ccc;
-}
+@tailwind preflight;
+@tailwind utilities;
