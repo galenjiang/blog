@@ -27,9 +27,9 @@ module.exports = merge(baseConfig, {
       verbose: true,
     }),
 
-    new BundleAnalyzerPlugin({
-      openAnalyzer: false,
-    }),
+    // new BundleAnalyzerPlugin({
+    //   openAnalyzer: false,
+    // }),
 
     // new webpack.DllReferencePlugin({
     //   // context: path.resolve('..'),
