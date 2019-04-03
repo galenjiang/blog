@@ -18,7 +18,16 @@ module.exports = api => {
     plugins: [
       '@babel/plugin-syntax-dynamic-import',
       'macros',
-      'react-css-modules',
+      [
+        'react-css-modules',
+        {
+          filetypes: {
+            '.css': {
+              syntax: 'postcss-scss',
+            },
+          },
+        },
+      ],
     ],
   }
 }

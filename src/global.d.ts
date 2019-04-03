@@ -1,3 +1,5 @@
-declare module 'ramda'
+declare module '*.jpeg'
 declare module '*.md'
+declare module '*.svg'
+declare module 'ramda'
 declare module 'babel-plugin-codegen/macro'

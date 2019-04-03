@@ -6,4 +6,10 @@
   @media (max-width: 767px) {
     padding: 20px;
   }
+  & .title {
+    @apply text-center;
+  }
+  & .date {
+    @apply text-center text-grey;
+  }
 }

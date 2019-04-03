@@ -22,6 +22,7 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
     '@typescript-eslint/explicit-function-return-type': 0,
     'arrow-parens': 0,
+    '@typescript-eslint/indent': 0,
   },
   overrides: [
     {

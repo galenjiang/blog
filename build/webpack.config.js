@@ -116,7 +116,7 @@ module.exports = {
             ]),
           },
           {
-            test: /\.(png|jpg|gif)$/i,
+            test: /\.(png|jpe?g|gif|svg)$/i,
             exclude: /node_modules/,
             use: [
               {

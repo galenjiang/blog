@@ -2,6 +2,8 @@ import React from 'react'
 import { withRouter } from 'react-router'
 import codegen from 'babel-plugin-codegen/macro'
 import './style.module.css'
+import { articleMap } from '../../md/list'
+
 // eslint-disable-next-line
 codegen`
 const fs = require('fs')
@@ -38,11 +40,19 @@ function DynamicArticle({
   },
 }: any) {
   const CustomizeComponent = componentMap[name]
-  return (
-    <div styleName="article">
-      <CustomizeComponent />
-    </div>
-  )
+  const article = articleMap.find(item => item.file === name)
+  if (article) {
+    return (
+      <div styleName="article">
+        <h2 styleName="title">{article.name}</h2>
+        <p styleName="date">{article.date}</p>
+        <hr />
+        <br />
+        <CustomizeComponent />
+      </div>
+    )
+  }
+  return null
 }
 
 export const withRouterDynamicDynamicArticle = withRouter(DynamicArticle)
