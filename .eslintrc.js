@@ -21,6 +21,7 @@ module.exports = {
     'import/no-unresolved': 0,
     'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
     '@typescript-eslint/explicit-function-return-type': 0,
+    'arrow-parens': 0,
   },
   overrides: [
     {
