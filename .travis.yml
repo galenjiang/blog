@@ -16,3 +16,4 @@ addons:
   ssh_known_hosts:
   - 118.89.115.23
   - github.com
+
