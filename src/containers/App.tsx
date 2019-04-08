@@ -1,8 +1,9 @@
 import React from 'react'
 import { HashRouter as Router, Route, Switch } from 'react-router-dom'
-import { Home } from './containers/Home/index'
-import { NotFound } from './components/404'
-import { withRouterDynamicDynamicArticle } from './containers/Article/index'
+import { Home } from './Home/index'
+import { NotFound } from '../components/404'
+import { withRouterDynamicDynamicArticle } from './Article/index'
+import './style.css'
 
 export function App() {
   return (

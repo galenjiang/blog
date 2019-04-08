@@ -1,15 +1,32 @@
 .article {
-  width: 100%;
-  max-width: 800px;
-  margin: 0px auto;
-  padding: 20px 40px 40px;
-  @media (max-width: 767px) {
-    padding: 20px;
-  }
   & .title {
     @apply text-center;
   }
   & .date {
     @apply text-center text-grey;
   }
+}
+
+
+:global(.article) {
+  & pre {
+    white-space: pre-wrap;
+    background: rgb(45, 45, 45);
+    color: rgb(204, 204, 204);
+    padding: 5px;
+  }
+
+  & a {
+        color: rgb(87, 62, 222);
+        transition: all 0.3s ease-in-out 0s;
+        text-decoration: none;
+    }
+  & p {
+    margin-top: 1.8em;
+    margin-bottom: 1.8em;
+  }
+  & ol {
+    padding-left: 20px;
+  }
+
 }

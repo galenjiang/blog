@@ -17,6 +17,11 @@ function camelCase(string) {
 }
 
 const importStatement = files.reduce((s, file) => {
+
+  console.log(file)
+  if (file === 'list.ts') {
+    return s
+  }
   return \`\${s}
   import \${camelCase(file.split('.')[0])} from '../../md/\${file}'
   \`
@@ -26,6 +31,9 @@ let importMap = \`
 const componentMap = {
 \`
 importMap = importMap + files.reduce((m, file, index) => {
+  if (file === 'list.ts') {
+    return m
+  }
   const name = file.split('.')[0]
   const func = camelCase(file.split('.')[0])
   return m + '"'+ name + '": ' + func + ','
@@ -43,7 +51,7 @@ function DynamicArticle({
   const article = articleMap.find(item => item.file === name)
   if (article) {
     return (
-      <div styleName="article">
+      <div className="container article" styleName="article">
         <h2 styleName="title">{article.name}</h2>
         <p styleName="date">{article.date}</p>
         <hr />
