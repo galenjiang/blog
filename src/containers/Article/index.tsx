@@ -18,7 +18,6 @@ function camelCase(string) {
 
 const importStatement = files.reduce((s, file) => {
 
-  console.log(file)
   if (file === 'list.ts') {
     return s
   }
