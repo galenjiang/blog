@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 const baseConfig = require('./webpack.config')
 
 module.exports = merge(baseConfig, {
@@ -36,5 +37,6 @@ module.exports = merge(baseConfig, {
     //   manifest: require('../dll/manifest.json'),
     //   // name: 'vendor'
     // })
+    new CopyPlugin([{ from: 'dll/vendor.dll.js' }]),
   ],
 })
