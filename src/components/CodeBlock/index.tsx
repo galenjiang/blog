@@ -4,11 +4,10 @@ import Highlight, { defaultProps } from 'prism-react-renderer'
 export const CodeBlock = ({ children }: any) => (
   <Highlight {...defaultProps} code={children} language="javascript">
     {({ className, style, tokens, getLineProps, getTokenProps }) => (
-      <pre
+      <code
         className={className}
         style={{
           ...style,
-          padding: '20px',
         }}
       >
         {tokens.map((line, i) => (
@@ -18,7 +17,7 @@ export const CodeBlock = ({ children }: any) => (
             ))}
           </div>
         ))}
-      </pre>
+      </code>
     )}
   </Highlight>
 )
