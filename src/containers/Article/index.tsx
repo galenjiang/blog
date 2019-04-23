@@ -1,8 +1,10 @@
 import React from 'react'
 import { withRouter } from 'react-router'
+
 import codegen from 'babel-plugin-codegen/macro'
 import './style.module.css'
 import { articleMap } from '../../md/list'
+import { CodeBlock } from '../../components/CodeBlock'
 
 // eslint-disable-next-line
 codegen`
@@ -55,7 +57,11 @@ function DynamicArticle({
         <p styleName="date">{article.date}</p>
         <hr />
         <br />
-        <CustomizeComponent />
+        <CustomizeComponent
+          components={{
+            code: CodeBlock,
+          }}
+        />
       </div>
     )
   }

@@ -117,7 +117,7 @@ react 的理念， UI = render(data)， 很显然用这两种不是很完美的�
 
 当我们局限在单个框架中，视角是很局限的，于是我研究了下 angular 的写法
 
-```
+```javascript
 import { Component } from '@angular/core';
 
 import { Observable, interval } from 'rxjs';
@@ -176,13 +176,15 @@ observable 毕竟是一个新的概念，虽然是函数式的，但总觉的和
 
 而且对于 observable 多次输入的同一个值，会造成重复计算，如何才能避免，怎么才能区分这两者的界限呢？
 
-```
+```javascript
 function Hello({ greeting$, name$ }) {
-    const [greeting] = useObservable(greeting$)
-    const [name] = useObservable(name$)
-    return <span>
-        {{ greeting }}  {{ name }}
+  const [greeting] = useObservable(greeting$)
+  const [name] = useObservable(name$)
+  return (
+    <span>
+      {{ greeting }} {{ name }}
     </span>
+  )
 }
 ```
 
