@@ -37,6 +37,10 @@ module.exports = merge(baseConfig, {
     //   manifest: require('../dll/manifest.json'),
     //   // name: 'vendor'
     // })
-    new CopyPlugin([{ from: 'dll/vendor.dll.js' }]),
+    new CopyPlugin([
+      { from: 'dll/vendor.dll.js' },
+      { from: 'public/avatar.jpeg' },
+      { from: 'manifest.json' },
+    ]),
   ],
 })
