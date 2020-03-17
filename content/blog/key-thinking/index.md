@@ -1,5 +1,5 @@
 ---
-title: 关于react key的思考（过期）
+title: 关于react key的思考
 date: "2016-05-01T22:12:03.284Z"
 description: "这个问题的思考来源于多年前对半受控组件思考..."
 ---
