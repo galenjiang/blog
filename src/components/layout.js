@@ -64,6 +64,22 @@ const Layout = ({ location, title, children }) => {
         © {new Date().getFullYear()}, Built with
         {` `}
         <a href="https://www.gatsbyjs.org">Gatsby</a>
+        <div
+          style={{
+            fontSize: `12px`
+          }}
+        >
+          备案号：
+          {` `}
+          <a
+            style={{
+              fontSize: `12px`,
+              color: `#999`
+            }}
+            href="http://www.beian.miit.gov.cn">沪ICP备17047243号-1
+          </a>
+        </div>
+        
       </footer>
     </div>
   )

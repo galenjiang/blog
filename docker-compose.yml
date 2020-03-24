@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+  webapp:
+    build: 
+      context: .
+      target: dev
+    command: npm start
+    ports:
+      - '8088:8000'
+    volumes:
+      - .:/app
+      - blog_node_modules:/app/node_modules
+volumes:
+  blog_node_modules:
