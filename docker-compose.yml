@@ -12,7 +12,7 @@ services:
   prod:
     build:
       context: .
-    volumes:
+    # volumes:
      # - node_modules:/app/node_modules
     ports:
       - 8080:8080
