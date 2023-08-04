@@ -13,5 +13,6 @@ CMD [ "pnpm", "dev" ]
 
 FROM dependence
 COPY . .
-CMD [ "pnpm", "prod" ]
+RUN npm install pm2 -g
+CMD ["pm2-runtime", "start", "--name", "blog", "pnpm", "--", "prod"]
 
