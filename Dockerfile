@@ -2,7 +2,7 @@ FROM node:20-alpine AS dependence
 WORKDIR /app
 RUN corepack enable
 COPY ["package.json", "pnpm-lock.yaml", "/app/"]
-VOLUME [ "/app/node_modules" ] # 构建镜像install时无法mount
+# VOLUME [ "/app/node_modules" ] # 构建镜像install时无法mount
 RUN pnpm install
 EXPOSE 8080
 
