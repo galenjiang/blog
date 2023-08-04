@@ -15,7 +15,7 @@ export async function sleep(ms: number) {
 async function fetchGithubContent<T>(path: string): Promise<T> {
     const headers = new Headers();
     headers.append("Accept", "application/vnd.github+json");
-    headers.append("Authorization", "Bearer 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");
+    headers.append("Authorization", "Bearer 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");
     headers.append("X-GitHub-Api-Version", "2022-11-28");
 
     const response = await fetch(`https://api.github.com/repos/galenjiang/articles/contents/${path}`, {
