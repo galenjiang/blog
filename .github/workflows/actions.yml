@@ -47,5 +47,5 @@ jobs:
         env:
           SSH_KEY: ${{ secrets.ALI_SECRET }}
           
-    - name: Exec Command
-      run: ssh deploy "cd /root/blog && git reset --hard HEAD && ggpull && docker compose up -d --build prod"
+      - name: Exec Command
+        run: ssh deploy "cd /root/blog && git reset --hard HEAD && ggpull && docker compose up -d --build prod"
