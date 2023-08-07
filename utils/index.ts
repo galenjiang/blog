@@ -98,6 +98,6 @@ export async function getAllArticles(): Promise<Array<{
 
 
     return articles.sort((left, right) => {
-        return left.date.isBefore(right.date) ? -1 : 1
+        return left.date.isBefore(right.date) ? 1 : -1
     })
 }
