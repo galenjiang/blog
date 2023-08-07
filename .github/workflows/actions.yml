@@ -49,4 +49,4 @@ jobs:
           
       - name: Exec Command
         # run: ssh deploy "echo hello"
-        run: ssh deploy "cd /root/blog && git reset --hard HEAD && ggpull && docker compose up -d --build prod"
+        run: ssh deploy "cd /root/blog && git reset --hard HEAD && git pull && docker compose up -d --build prod"
