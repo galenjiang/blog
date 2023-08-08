@@ -28,7 +28,7 @@ async function fetchGithubContent<T>(path: string): Promise<T> {
     })
 
     if (!response.ok) {
-        throw new Error("Can't get articles!")
+        throw new Error(`Can't get github content: ${path}!`)
     }
 
     return response.json()
@@ -49,6 +49,7 @@ export async function parseArticle(file: string) {
 }
 
 export async function getArticle(name: string) {
+    console.log('name', name)
     const file = await fetchGithubContent<{
         name: string
         content: string
