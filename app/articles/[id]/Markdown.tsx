@@ -8,12 +8,14 @@ import typescript from 'highlight.js/lib/languages/typescript';
 import shell from 'highlight.js/lib/languages/shell';
 import yaml from 'highlight.js/lib/languages/yaml';
 import json from 'highlight.js/lib/languages/json';
+import markdown from 'highlight.js/lib/languages/markdown';
 // Then register the languages you need
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('typescript', typescript);
 hljs.registerLanguage('shell', shell);
 hljs.registerLanguage('yaml', yaml);
 hljs.registerLanguage('json', json);
+hljs.registerLanguage('markdown', markdown);
 
 export default function Markdown(props:  { children: React.ReactNode }) {
     console.log('render markdown')
