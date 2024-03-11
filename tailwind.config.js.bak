@@ -5,7 +5,7 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  safelist: ['mt-8', "sr-only"], // mdx不识别
+  safelist: ['mt-8', "sr-only"], // mdx不识别 sr-only accessiable
   theme: {
     extend: {
       backgroundImage: {

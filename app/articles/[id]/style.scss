@@ -1,9 +1,6 @@
 @use "sass:meta";
 
-@media (prefers-color-scheme: light) {
-    @import "highlight.js/styles/atom-one-dark";
-}
- 
-@media (prefers-color-scheme: dark) {
-    @import "highlight.js/styles/atom-one-light";
+@import "highlight.js/styles/atom-one-dark";
+.hljs {
+    background: initial !important;
 }

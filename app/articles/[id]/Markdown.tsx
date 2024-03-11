@@ -16,9 +16,11 @@ hljs.registerLanguage('shell', shell);
 hljs.registerLanguage('yaml', yaml);
 hljs.registerLanguage('json', json);
 hljs.registerLanguage('markdown', markdown);
+// hljs.configure({
+//     classPrefix: ''
+// })
 
 export default function Markdown(props:  { children: React.ReactNode }) {
-    console.log('render markdown')
     useEffect(() => {
         hljs.highlightAll()
     }, [])
