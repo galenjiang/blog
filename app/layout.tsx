@@ -23,7 +23,7 @@ export default function RootLayout({
   const now = dayjs().format('YYYY')
   return (
     <html lang="en">
-      <body className={clsx(inter.className, 'min-h-screen font-sans antialiased absolute w-full pb-10')}>
+      <body className={clsx(inter.className, 'min-h-screen font-sans antialiased absolute w-full pb-20')}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
