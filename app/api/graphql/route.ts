@@ -1,6 +1,7 @@
 import { revalidatePath } from "next/cache";
 import { startServerAndCreateNextHandler } from '@as-integrations/next';
 import { ApolloServer } from '@apollo/server';
+import { ApolloServerPluginLandingPageProductionDefault } from '@apollo/server/plugin/landingPage/default';
 import { gql } from 'graphql-tag';
 import { Void } from "./scalar";
 
@@ -50,6 +51,12 @@ const typeDefs = gql`
 const server = new ApolloServer({
   resolvers,
   typeDefs,
+  plugins: [
+    ApolloServerPluginLandingPageProductionDefault({
+      graphRef: 'blog-z2z08o@current',
+      embed: true
+    })
+  ]
 });
 
 const handler = startServerAndCreateNextHandler(server);
