@@ -53,7 +53,7 @@ const server = new ApolloServer({
   typeDefs,
   plugins: [
     ApolloServerPluginLandingPageProductionDefault({
-      graphRef: 'blog-z2z08o@current',
+      graphRef: 'blog-f2psbn@current',
       embed: true
     })
   ]
