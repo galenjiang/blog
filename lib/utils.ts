@@ -51,7 +51,7 @@ export async function parseArticle(file: string) {
     options: {
       mdxOptions: {
         remarkPlugins: [remarkGfm, remarkMath],
-        rehypePlugins: [rehypeKatex],
+        rehypePlugins: [rehypeKatex as any],
         format: "mdx",
       },
       parseFrontmatter: true,
