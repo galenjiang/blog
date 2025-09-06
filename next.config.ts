@@ -1,18 +1,14 @@
+import type { NextConfig } from "next";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import createMDX from "@next/mdx";
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  experimental: {
-    mdxRs: true,
-    // appDir: true,
-  },
+const nextConfig: NextConfig = {
+  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
 };
 
 const withMDX = createMDX({
   options: {
-    extension: /\.mdx?$/,
     remarkPlugins: [remarkGfm, remarkMath],
     rehypePlugins: [],
     // If you use `MDXProvider`, uncomment the following line.

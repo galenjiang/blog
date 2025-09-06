@@ -1,30 +1,38 @@
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
-import { getAllArticles } from "@/lib/utils"
-import Link from "next/link"
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/card";
+import { getAllArticles } from "@/lib/fetch";
+import Link from "next/link";
 
 export default async function Page() {
-    const list = await getAllArticles()
-    return <div className="container mx-auto">
-
-        <h2 className="text-5xl leading-loose font-bold flex justify-between items-center">
-            <span>Galen&apos;s Blog</span>
-        </h2>
-        <main className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {
-                list.map(article => (<Link key={article.name} href={`articles/${article.name}`}>
-                    <Card className="h-full flex flex-col hover:shadow-lg">
-                        <CardHeader>
-                            <div className="truncate font-bold">{article.title}</div>
-                        </CardHeader>
-                        <CardContent className="flex-auto">
-                            <div className="line-clamp-3 my-2">{article.description}</div>
-                        </CardContent>
-                        <CardFooter>
-                            <div className="mt-auto text-right">{article.date.format('YYYY-MM-DD')}</div>
-                        </CardFooter>
-                    </Card>
-                </Link>))
-            }
-        </main>
+  const list = await getAllArticles();
+  return (
+    <div className="container mx-auto">
+      <h2 className="text-5xl leading-loose font-bold flex justify-between items-center">
+        <span>Galen&apos;s Blog</span>
+      </h2>
+      <main className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {list.map((article) => (
+          <Link key={article.name} href={`articles/${article.name}`}>
+            <Card className="h-full flex flex-col hover:shadow-lg">
+              <CardHeader>
+                <div className="truncate font-bold">{article.title}</div>
+              </CardHeader>
+              <CardContent className="flex-auto">
+                <div className="line-clamp-3 my-2">{article.description}</div>
+              </CardContent>
+              <CardFooter>
+                <div className="mt-auto text-right">
+                  {article.date.format("YYYY-MM-DD")}
+                </div>
+              </CardFooter>
+            </Card>
+          </Link>
+        ))}
+      </main>
     </div>
+  );
 }
