@@ -12,8 +12,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@apollo/server": "^4.10.1",
-    "@as-integrations/next": "^3.0.0",
+    "@apollo/server": "^5.0.0",
+    "@as-integrations/next": "^4.0.0",
     "@eslint/eslintrc": "^3",
     "@hookform/resolvers": "^3.3.4",
     "@mdx-js/loader": "^2.3.0",
@@ -36,7 +36,7 @@
     "embla-carousel-react": "^8.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.5.2",
-    "graphql": "^16.8.1",
+    "graphql": "^16.11.0",
     "graphql-tag": "^2.12.6",
     "highlight.js": "^11.8.0",
     "input-otp": "^1.0.1",

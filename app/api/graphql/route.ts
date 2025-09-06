@@ -1,28 +1,39 @@
 import { revalidatePath } from "next/cache";
-import { startServerAndCreateNextHandler } from '@as-integrations/next';
-import { ApolloServer } from '@apollo/server';
-import { ApolloServerPluginLandingPageProductionDefault } from '@apollo/server/plugin/landingPage/default';
-import { gql } from 'graphql-tag';
+import { startServerAndCreateNextHandler } from "@as-integrations/next";
+import { NextRequest } from "next/server";
+import { ApolloServer } from "@apollo/server";
+import { ApolloServerPluginLandingPageProductionDefault } from "@apollo/server/plugin/landingPage/default";
+import { gql } from "graphql-tag";
 import { Void } from "./scalar";
 
 enum Resource {
-  ARTICLES = 'ARTICLES'
+  ARTICLES = "ARTICLES",
 }
 
 const resolvers = {
   Query: {
-    greetings(obj: unknown, args: { name: string }, context: unknown, info: unknown) {
-      return `hello ${args.name}`
-    }
+    greetings(
+      obj: unknown,
+      args: { name: string },
+      context: unknown,
+      info: unknown,
+    ) {
+      return `hello ${args.name}`;
+    },
   },
   Mutation: {
-    revalidate(obj: unknown, args: { resource: Resource }, context: unknown, info: unknown) {
-      console.log(args)
+    revalidate(
+      obj: unknown,
+      args: { resource: Resource },
+      context: unknown,
+      info: unknown,
+    ) {
+      console.log(args);
       if (args.resource === Resource.ARTICLES) {
-        revalidatePath('/articles')
-        return { revalidated: true, now: Date.now() }
+        revalidatePath("/articles");
+        return { revalidated: true, now: Date.now() };
       }
-      return { revalidated: false, now: Date.now() }
+      return { revalidated: false, now: Date.now() };
     },
   },
   Void: Void,
@@ -53,12 +64,18 @@ const server = new ApolloServer({
   typeDefs,
   plugins: [
     ApolloServerPluginLandingPageProductionDefault({
-      graphRef: 'blog-f2psbn@current',
-      embed: true
-    })
-  ]
+      graphRef: "blog-f2psbn@current",
+      embed: true,
+    }),
+  ],
 });
 
 const handler = startServerAndCreateNextHandler(server);
 
-export { handler as GET, handler as POST };
+export function GET(request: NextRequest) {
+  return handler(request);
+}
+
+export function POST(request: NextRequest) {
+  return handler(request);
+}
