@@ -1,8 +1,8 @@
-"use client";
+// "use client";
 
 import dayjs from "dayjs";
 
-function Footer() {
+export default function Footer() {
   const now = dayjs().format("YYYY");
   return (
     <footer className="text-center w-full my-8">
@@ -10,5 +10,3 @@ function Footer() {
     </footer>
   );
 }
-
-export default Footer;

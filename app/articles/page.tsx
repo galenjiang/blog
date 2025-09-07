@@ -11,9 +11,6 @@ export default async function Page() {
   const list = await getAllArticles();
   return (
     <div className="container mx-auto">
-      <h2 className="text-5xl leading-loose font-bold flex justify-between items-center">
-        <span>Galen&apos;s Blog</span>
-      </h2>
       <main className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {list.map((article) => (
           <Link key={article.name} href={`articles/${article.name}`}>
