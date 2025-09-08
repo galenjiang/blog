@@ -4,7 +4,7 @@ import Footer from "../../components/footer";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="px-4 pt-8 pb-4">
+    <div className="">
       <div>{children}</div>
     </div>
   );

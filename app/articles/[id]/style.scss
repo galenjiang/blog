@@ -1,6 +1,13 @@
 @use "sass:meta";
 
 @import "highlight.js/styles/atom-one-dark";
-.hljs {
-    background: initial !important;
+/* pre是 tailwind控制，需要根据hightlight.js一起变 */
+pre {
+    background-color: #282c34;
+}
+.dark {
+    @import "highlight.js/styles/atom-one-light";
+    pre {
+        background-color: #fafafa;
+    }
 }

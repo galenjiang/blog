@@ -1,7 +1,7 @@
 import { getAllArticles, getArticle } from "@/lib/fetch";
 import dayjs from "dayjs";
 
-import Markdown from "./Markdown";
+import HightlightWrapper from "./hightlight";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
@@ -30,7 +30,7 @@ export default async function Page({
           {dayjs(frontmatter.date).format("YYYY-MM-DD")}
         </div>
         <div className="mb-6">{frontmatter.description}</div>
-        <Markdown>{content}</Markdown>
+        <HightlightWrapper>{content}</HightlightWrapper>
       </article>
     );
   } catch (error) {
