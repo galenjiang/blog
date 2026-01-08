@@ -10,7 +10,7 @@ import Link from "next/link";
 export default async function Page() {
   const list = await getAllArticles();
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto px-4">
       <main className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {list.map((article) => (
           <Link key={article.name} href={`articles/${article.name}`}>

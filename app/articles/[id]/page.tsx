@@ -22,7 +22,7 @@ export default async function Page({
   try {
     let { content, frontmatter } = await getArticle(id);
     return (
-      <article className="prose dark:prose-invert md:prose-lg lg:prose-xl xl:prose-xl 2xl:prose-2xl mx-auto">
+      <article className="prose dark:prose-invert md:prose-lg lg:prose-xl xl:prose-xl 2xl:prose-2xl mx-auto px-4">
         <header className="text-6xl text-center font-bold leading-loose">
           {frontmatter.title}
         </header>
