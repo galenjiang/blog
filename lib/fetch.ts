@@ -5,6 +5,7 @@ import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import rehypePrettyCode from "rehype-pretty-code";
+import rehypeShiki from '@shikijs/rehype'
 
 async function fetchGithubContent<T>(path: string): Promise<T> {
   const headers = new Headers();
@@ -46,12 +47,11 @@ export async function parseArticle(file: string) {
         rehypePlugins: [
           rehypeKatex,
           [
-            rehypePrettyCode,
+            rehypeShiki,
             {
-              // keepBackground: false,
-              theme: {
-                dark: "github-light",
-                light: "one-dark-pro",
+              themes: {
+                light: "material-theme-lighter",
+                dark: "one-dark-pro",
               },
             },
           ],
