@@ -50,7 +50,7 @@ export async function parseArticle(file: string) {
             {
               themes: {
                 light: "material-theme-lighter",
-                dark: "material-theme-dark",
+                dark: "material-theme-darker",
               },
             },
           ],
