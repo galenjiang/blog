@@ -4,6 +4,7 @@ import { JSXElementConstructor, ReactElement } from "react";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+import rehypePrettyCode from "rehype-pretty-code";
 
 async function fetchGithubContent<T>(path: string): Promise<T> {
   const headers = new Headers();
@@ -42,7 +43,19 @@ export async function parseArticle(file: string) {
     options: {
       mdxOptions: {
         remarkPlugins: [remarkGfm, remarkMath],
-        rehypePlugins: [rehypeKatex],
+        rehypePlugins: [
+          rehypeKatex,
+          [
+            rehypePrettyCode,
+            {
+              // keepBackground: false,
+              theme: {
+                dark: "github-light",
+                light: "one-dark-pro",
+              },
+            },
+          ],
+        ],
       },
       parseFrontmatter: true,
     },

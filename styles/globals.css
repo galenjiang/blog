@@ -1,4 +1,5 @@
 @import "tailwindcss";
+
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
@@ -123,7 +124,23 @@
     * {
         @apply border-border outline-ring/50;
     }
+
     body {
         @apply bg-background text-foreground;
     }
+}
+
+
+
+
+.prose pre[data-theme],
+.prose pre[data-theme] span {
+    color: var(--shiki-light);
+    background-color: var(--shiki-light-bg);
+}
+
+.dark .prose pre[data-theme],
+.dark .prose pre[data-theme] span {
+    color: var(--shiki-dark);
+    background-color: var(--shiki-dark-bg);
 }
