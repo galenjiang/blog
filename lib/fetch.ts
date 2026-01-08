@@ -4,7 +4,6 @@ import { JSXElementConstructor, ReactElement } from "react";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
-import rehypePrettyCode from "rehype-pretty-code";
 import rehypeShiki from '@shikijs/rehype'
 
 async function fetchGithubContent<T>(path: string): Promise<T> {
@@ -51,7 +50,7 @@ export async function parseArticle(file: string) {
             {
               themes: {
                 light: "material-theme-lighter",
-                dark: "one-dark-pro",
+                dark: "material-theme-dark",
               },
             },
           ],
